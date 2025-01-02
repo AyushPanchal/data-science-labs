@@ -1,0 +1,107 @@
+Hello everyone, This is ayush panchal. 
+
+I'm here to explain my project CashewGuard : Ai for cashew disease classification using a convolutional neural network and transfer learning. 
+
+I have done this project with my teammates Pooja dave and Avanti thale.
+
+So, let me introduce you all to a problem and then we will discuss the potential solution to it.
+
+As we know that there are times when it becomes hard to deal with the diseases happening during the farming process of various plants. 
+
+Here, I would like to talk about the cashew plants in particular.
+
+Our end goal will be to identify the various diseases happening in cashew plants such as anthracnose, red rust, gumosis etc.
+
+We want to design an intelligent system that can classify the disease of the cashew plants by just looking at the image of the infected leaf/Trunk.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+For this purpose we are going to leverage the power of computer vision, deep learning and Transfer Learning techniques.
+
+Here are the python libraries which we are going to use
+
+- NumPy, Pandas
+- Matplotlib and Seaborn for better visualization
+- OpenCV for computer vision tasks
+- Scikit-learn for accuracy metrics and splitting the data
+- TensorFlow for Transfer learning and deep learning
+
+
+Our first task will be to collect the healthy and infected images of cashew.
+
+We collected the cashew image data from the mendeley.com, I will provide the link of the dataset in the description.
+
+Moving forward we will load the images and their respective class labels into variable for further analysis
+
+While doing exploratory data analysis we found out that the data is perfectly balanced except the Gumosis class images.
+
+Here are the example images from each class in the dataset.
+
+Red rust image
+anthracnose
+healthy
+gummosis (It's a trunk of Cashew Tree)
+And finally the leaf miner infected leaf
+
+Here we can see that the anthracnose and leafminer kinda looks identical to each other.
+
+Going forward we will split the data into training and testing parts and perform one hot encoding because our deep learning algorithm does not understand human language but numbers only.
+
+We will leverage the help of Transfer learning.
+
+What is transfer learning ? 
+
+As we know Deep convolutional neural network models may take days or even weeks to train on very large datasets.
+
+A way to short-cut this process is to re-use the model weights from pre-trained models that were developed for standard computer vision benchmark datasets, such as the ImageNet image recognition tasks. Top performing models can be downloaded and used directly, or integrated into a new model for your own computer vision problems.
+
+In this Project, We'll be using the EfficientNetB0 model which will use the weights from the ImageNet dataset.
+
+The include_top parameter is set to False so that the network doesn't include the top layer/output layer from the pre-built model which allows us to add our own output layer depending upon our use case!
+
+This is our model architecture which we will train for our dataset.
+
+For model compilation we have used
+- Categorical Cross entropy loss
+- Adam Optimizer for gradient descent
+- Accuracy as our metrics
+
+For Callback functions we have used
+- Tensor board for accuracy and loss visualization during training
+- ModelCheckPoint for saving the best model
+- RediceLROnPlateu for reduction of LR when plateau is detected
+
+After 15 minutes Our model gets trained successfully with the training and validation accuracy of 99% and 98% respectively. 
+
+Here is the visual representation of changes in accuracy and loss while model training 
+
+Now it's time to make prediction on Test data and measure the accuracy of it
+
+We have used classification report and confusion matrix.
+
+As we can see in the confusion matrix that the model is getting confused for two labels which are anthracnose and leaf miner because they both look kinda similar. We can overcome this issue with adding more images of each classes in the dataset.
+
+Here we have some advanced visualizations for each image.
+
+The text on the left side shows the predicted label of an image, and if the predicted label is same as the actual label then the color of the text will be green else the color will be red for false prediction.
+
+In the middle we have the confidence percentage for the prediction, showing how much confident our model is with the prediction.
+
+That's it for this project.
+
+Now let's discuss the future scope of this.
+
+This model can be integrated with various platforms like mobile or website where we can provide image upload functionalities to the user to identify the current disease of the image.
+
+In future, We will definitely think about integrating the model with mobile application. Using technologies like flutter and flask/FastAPI of python.
+
+We can extend this application for multiple plants such as tomato, maize, potato and many more.
+
+We can also create an autonomous drone system and integrate our models which can monitor the crop fields timely to detect any disease happening.
+
+Our tool will be very helpful to the farmers.
+
+Lastly Thank you for watching till the end. 
+Please leave a like if you enjoyed our project and drop your suggestions or questions in the comment box.
+
+See you all in the next video. Bye bye!
